@@ -12,6 +12,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app )
 
 #Consegna #1. Creare una tabella del DB
+class Card(db.Model):
+    # ID
+    id = db.Column(db.Integer, primary_key=True)
+    # TITOLO
+    title = db.Column(db.String(100), nullable=False)
+    # SOTTOTIOLO
+    subtitle = db.Column(db.String(300), nullable=False)
+    
+    # TESTO
+    text = db.Column(db.Text, nullable=False)
+    def __repr__(self):
+        return f'<Card {self.id}>'
 
 
 
@@ -28,18 +40,15 @@ db = SQLAlchemy(app )
 def index():
     # Visualizzazione degli oggetti del DB
     # Consegna #2. Visualizzare gli oggetti del DB in index.html
-    
-
+    cards = Card.query.order_by(Card.id).all()
     return render_template('index.html',
-                           #cards = cards
-
+                           cards = cards
                            )
-
 # Esecuzione della pagina con la scheda
 @app.route('/card/<int:id>')
 def card(id):
     # Consegna #2. Mostrare la scheda giusta in base al suo id
-    
+    card = Card.query.get(id)
 
     return render_template('card.html', card=card)
 
@@ -57,6 +66,9 @@ def form_create():
         text =  request.form['text']
 
         # Consegna #2. Creare un modo per memorizzare i dati nel DB
+        card = Card(title=title, subtitle=subtitle, text=text)
+        db.session.add(card)
+        db.session.commit()
         
 
 
