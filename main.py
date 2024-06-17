@@ -29,12 +29,10 @@ class Card(db.Model):
     
 
 #Consegna #2. Creare la tabella User
-
-
-
-
-
-
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    login = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(30), nullable=False)
 
 
 
@@ -47,13 +45,16 @@ def login():
             form_password = request.form['password']
             
             #Consegna #4. Implementare l'autorizzazione
-            
-
-
-            
+            users_db = User.query.all()
+            for user in users_db:
+                if user.login == form_login and user.password == form_password:
+                    return redirect('/index')  
+            else:
+                error = "Password o email errate!"
+                return render_template('login.html', error=error)
+               
         else:
             return render_template('login.html')
-
 
 
 @app.route('/reg', methods=['GET','POST'])
@@ -63,7 +64,9 @@ def reg():
         password = request.form['password']
         
         #Consegna #3. Fare in modo che i dati dell'utente vengano registrati nel database.
-        
+        user = User(login=login, password=password)
+        db.session.add(user)
+        db.session.commit()
 
         
         return redirect('/')
