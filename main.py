@@ -1,29 +1,34 @@
 # Import
 from flask import Flask, render_template,request, redirect
-# Importare la libreria del database
+# Collegare la libreria del database
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-# Collegamento con SQLite
+# Connettere SQLite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diary.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# Creare un DB
-db = SQLAlchemy(app )
+# Creare il DB
+db = SQLAlchemy(app)
+# Creare la tabella
 
-#Consegna #1. Creare una tabella del DB
 class Card(db.Model):
-    # ID
+    # Creazione delle colonne
+    # id
     id = db.Column(db.Integer, primary_key=True)
-    # TITOLO
+    # Titolo
     title = db.Column(db.String(100), nullable=False)
-    # SOTTOTIOLO
+    # Sottotitolo
     subtitle = db.Column(db.String(300), nullable=False)
-    
-    # TESTO
+    # Testo
     text = db.Column(db.Text, nullable=False)
+
+    # Visualizzazione dell'oggetto e dell'id
     def __repr__(self):
         return f'<Card {self.id}>'
+    
+
+#Consegna #2. Creare la tabella User
 
 
 
@@ -33,31 +38,60 @@ class Card(db.Model):
 
 
 
+# Esecuzione della pagina dei contenuti
+@app.route('/', methods=['GET','POST'])
+def login():
+        error = ''
+        if request.method == 'POST':
+            form_login = request.form['email']
+            form_password = request.form['password']
+            
+            #Consegna #4. Implementare l'autorizzazione
+            
 
 
-# Esecuzione della pagina con il contenuto
-@app.route('/')
+            
+        else:
+            return render_template('login.html')
+
+
+
+@app.route('/reg', methods=['GET','POST'])
+def reg():
+    if request.method == 'POST':
+        login= request.form['email']
+        password = request.form['password']
+        
+        #Consegna #3. Fare in modo che i dati dell'utente vengano registrati nel database.
+        
+
+        
+        return redirect('/')
+    
+    else:    
+        return render_template('registration.html')
+
+
+# Esecuzione della pagina dei contenuti
+@app.route('/index')
 def index():
-    # Visualizzazione degli oggetti del DB
-    # Consegna #2. Visualizzare gli oggetti del DB in index.html
+    # Visualizzazione delle voci del database
     cards = Card.query.order_by(Card.id).all()
-    return render_template('index.html',
-                           cards = cards
-                           )
-# Esecuzione della pagina con la scheda
+    return render_template('index.html', cards=cards)
+
+# Esecuzione della pagina con la voce
 @app.route('/card/<int:id>')
 def card(id):
-    # Consegna #2. Mostrare la scheda giusta in base al suo id
     card = Card.query.get(id)
 
     return render_template('card.html', card=card)
 
-# Esecuzione della pagina e creazione della scheda
+# Esecuzione della pagina di creazione della voce
 @app.route('/create')
 def create():
     return render_template('create_card.html')
 
-# Il modulo della scheda
+# Il modulo di iscrizione
 @app.route('/form_create', methods=['GET','POST'])
 def form_create():
     if request.method == 'POST':
@@ -65,18 +99,17 @@ def form_create():
         subtitle =  request.form['subtitle']
         text =  request.form['text']
 
-        # Consegna #2. Creare un modo per memorizzare i dati nel DB
+        # Creare un oggetto che sarà inviato al DB
         card = Card(title=title, subtitle=subtitle, text=text)
+
         db.session.add(card)
         db.session.commit()
-        
-
-
-
-
-        return redirect('/')
+        return redirect('/index')
     else:
         return render_template('create_card.html')
+
+
+
 
 
 if __name__ == "__main__":
