@@ -1,20 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 body::-webkit-scrollbar {
     width: 12px;
-  }
-  
-  body::-webkit-scrollbar-track {
-    background: #0F172A;        /* il colore della zona di tracciato */
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background-color: rgba(30, 41, 59, 0.4);    /* il colore della barra di scorrimento */
-    border-radius: 20px;       /* la rotondità della barra di scorrimento */
+}
+
+body::-webkit-scrollbar-track {
+    background: #0F172A; /* Puoi cambiarlo se vuoi */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(211, 187, 74, 0.4); /* Modificato */
+    border-radius: 20px;
     border: none;
-  }
-
-
-
+}
 
 body {
     margin: 0;
@@ -22,14 +19,13 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 20px;
-    background-color: #0F172A;
-    color: #F8FAFC;
+    background-color: #0F172A; /* Puoi cambiarlo se vuoi */
+    color: #d3bb4a; /* Modificato */
 }
 
 h1, h2, p {
     margin: 0;
 }
-
 
 img {
     object-fit: contain;
@@ -61,7 +57,6 @@ ul {
     gap: 20px;
 }
 
-
 .main__title {
     font-size: 40px;
     text-align: center;
@@ -82,10 +77,9 @@ ul {
     width: 350px;
     height: 500px;
     transition: 0.2s;
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(211, 187, 74, 0.4); /* Modificato */
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .card__link {
@@ -97,7 +91,7 @@ ul {
 }
 
 .card__text {
-    border-top: 1px solid rgba(14, 165, 233, 1);
+    border-top: 1px solid #d3bb4a; /* Modificato */
     width: inherit;
     display: flex;
     padding: 50px 0 20px;
@@ -110,10 +104,10 @@ ul {
     padding: 0 20px;
     text-align: center;
 }
+
 .card__subtitle {
     padding: 0 20px;
     text-align: center;
-
 }
 
 .card__img {
@@ -131,7 +125,7 @@ ul {
 
 .card--creat:hover,
 .card:hover {
-    box-shadow: 0px 4px 10px rgba(14, 165, 233, 1);
+    box-shadow: 0px 4px 10px #d3bb4a; /* Modificato */
 }
 
 .creat-form {
@@ -150,7 +144,7 @@ ul {
     gap: 30px;
     flex-direction: column;
     align-items: center;
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(211, 187, 74, 0.4); /* Modificato */
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -168,11 +162,11 @@ ul {
 }
 
 .form__input {
-    background: #0F172A;
+    background: #0F172A; /* Puoi cambiarlo se vuoi */
     border-radius: 10px;
     padding: 10px;
     height: 30px;
-    color: #F8FAFC;
+    color: #F8FAFC; /* Puoi cambiarlo se vuoi */
     font: inherit;
     border: none;
     width: 94%;
@@ -183,20 +177,20 @@ ul {
 }
 
 .form__text {
-    background: #0F172A;
+    background: #0F172A; /* Puoi cambiarlo se vuoi */
     border-radius: 10px;
     padding: 10px;
-    color: #F8FAFC;
+    color: #F8FAFC; /* Puoi cambiarlo se vuoi */
     font: inherit;
     border: none;
     width: 94%;
 }
 
 .form__button {
-    border: 1px solid rgba(14, 165, 233, 1);
-    background: #0F172A;
+    border: 1px solid #d3bb4a; /* Modificato */
+    background: #0F172A; /* Puoi cambiarlo se vuoi */
     border-radius: 10px;
-    color: rgba(14, 165, 233, 1);
+    color: #d3bb4a; /* Modificato */
     padding: 10px;
     font: inherit;
     width: 200px;
@@ -206,8 +200,8 @@ ul {
 }
 
 .form__button:hover {
-    color: #F8FAFC;
-    background:  rgba(14, 165, 233, 1);
+    color: #F8FAFC; /* Puoi cambiarlo se vuoi */
+    background: #d3bb4a; /* Modificato */
 }
 
 .main {
@@ -215,7 +209,7 @@ ul {
 }
 
 .main__block {
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(211, 187, 74, 0.4); /* Modificato */
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     padding: 30px 80px;
@@ -238,10 +232,10 @@ ul {
 
 .main__link {
     display: block;
-    border: 1px solid rgba(14, 165, 233, 1);
-    background: #0F172A;
+    border: 1px solid #d3bb4a; /* Modificato */
+    background: #0F172A; /* Puoi cambiarlo se vuoi */
     border-radius: 10px;
-    color: rgba(14, 165, 233, 1);
+    color: #d3bb4a; /* Modificato */
     padding: 15px 10px;
     font: inherit;
     width: 200px;
@@ -251,10 +245,9 @@ ul {
 }
 
 .main__link:hover {
-    color: #F8FAFC;
-    background:  rgba(14, 165, 233, 1);
+    color: #F8FAFC; /* Puoi cambiarlo se vuoi */
+    background: #d3bb4a; /* Modificato */
 }
-
 
 .main-login {
     display: flex;
@@ -269,16 +262,14 @@ ul {
     gap: 30px;
     flex-direction: column;
     align-items: center;
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(211, 187, 74, 0.4); /* Modificato */
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .login label {
     width: 60%;
 }
-
 
 .reg__link {
     height: fit-content;
@@ -292,5 +283,5 @@ ul {
 }
 
 .login__link:hover {
-    color: rgba(14, 165, 233, 1);
+    color: #d3bb4a; /* Modificato */
 }
